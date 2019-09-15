@@ -23,8 +23,19 @@ const instagram = {
 
     let loginButton = await instagram.page.$x('//a[contains(text(), "Zaloguj się")]');
 
+     // click login btn
     await loginButton[0].click();
+
+    await instagram.page.waitForNavigation({ waitUntil: 'networkidle2' });
+
+    await instagram.page.waitFor(1000);
+
+    //typing username and pass
+    await instagram.page.type('input[name="username"]', username, { delay: 50 });
+    await instagram.page.type('input[name="password"]', password, { delay: 50 });
+
     debugger;
+
   }
 };
 
